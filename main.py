@@ -16,8 +16,10 @@ headers = {
 # path of the file were to save the csv file
 FILE = 'pers.csv'
 
+
 # create a main function
 def parce():
+
     # list that will store the operators
     pers = []
     html = get_html(URL)
@@ -29,18 +31,23 @@ def parce():
         create_file(pers, FILE)
     else:
         print('error')
+    print(len(pers))
     # display the time of execution of all code
     print("--- %s seconds ---" % round(time.time() - start_time, 2))
 
+
 # function that returns a html file
 def get_html(url):
+
     r = requests.get(url, allow_redirects=True, headers=headers)
     return r
+
 
 # function that returns result of the parsed html
 def get_soup(html):
     soup = BeautifulSoup(html, 'html.parser')
     return soup
+
 
 # function that get the needed content of all the operators from given html
 def get_content(html):
@@ -76,9 +83,9 @@ def get_content(html):
             # 'realName': realNames,
             # 'dateOfBirth': dateOfBirths,
             # 'placeOfBirth': placeOfbirths,
-
         })
     return pers
+
 
 # create csv file using the list of operators
 def create_file(items, path):
