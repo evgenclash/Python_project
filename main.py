@@ -2,11 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 import time
-<<<<<<< HEAD
 from phantomjs import Phantom
-=======
 
->>>>>>> c89d3272a9fcf22ea904fdb2ff742b58ba52edfd
 # start of the timer
 start_time = time.time()
 
