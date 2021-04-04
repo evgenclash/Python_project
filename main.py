@@ -28,7 +28,9 @@ def parce():
         # add the return of the function get_content to the list called pers
         pers.extend(get_content(html.text))
         # write all the data into a csv file(call the function that does it for us
-        create_file(pers, FILE)
+        # create_file(pers, FILE)
+
+        sort_list(pers)
     else:
         print('error')
     print(len(pers))
@@ -72,7 +74,7 @@ def get_content(html):
         # number+=1
         # print(links.text)
         # print(soup)
-        # print(links.text)
+        # print(links)
 
         # add all the info about operators from their card info
         pers.append({
@@ -85,6 +87,19 @@ def get_content(html):
             # 'placeOfBirth': placeOfbirths,
         })
     return pers
+
+
+def sort_list(list):
+    # set the order for sorting, by default it is set as asc(change to 'desc' for desc order)
+    order = 'asc'
+    sort_by_name(list, order)
+
+
+def sort_by_name(list, order):
+    if order == 'asc':
+        print(sorted(list, key=lambda i: i['name']))
+    elif order == 'desc':
+        print(sorted(list, key=lambda i: i['name'], reverse=True))
 
 
 # create csv file using the list of operators
