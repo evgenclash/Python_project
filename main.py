@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 import time
+from phantomjs import Phantom
 # start of the timer
 start_time = time.time()
 # get the url of the main pages that is going to be parsed
@@ -111,4 +112,14 @@ def create_file(items, path):
             writer.writerow([item['name'], item['logoUri'], item['cardLogoUri'], item['personalPageUri']])
 
 
+
+
+
+
+phantom = Phantom()
+
+conf = {
+    'url': 'http://example.com/',   # Mandatory field
+}
+output = phantom.download_page(conf, js_path='/Users/mac/.pyenv/versions/3.9.2/lib/python3.9/phantomjs')
 parce()
