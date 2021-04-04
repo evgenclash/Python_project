@@ -2,18 +2,25 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 import time
+<<<<<<< HEAD
 from phantomjs import Phantom
+=======
+
+>>>>>>> c89d3272a9fcf22ea904fdb2ff742b58ba52edfd
 # start of the timer
 start_time = time.time()
+
 # get the url of the main pages that is going to be parsed
 URL = 'https://www.ubisoft.com/en-gb/game/rainbow-six/siege/game-info/operators?isSso=true&refreshStatus=noLoginData' \
       '&fbclid=IwAR0hE7Rjar0iT52mQtp9FaYL5ezVY3I_Th_KnCpH2ExvLlOE0eHKP6s-kTo '
 # add host name as to use it for creating urlLinks for operators
 HOST = 'https://www.ubisoft.com'
+
 # headers that is used to look like real people for the server
 headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6)AppleWebKit/537.36 (KHTML, like Gecko) '
                   'Chrome/71.0.3578.98 Safari/537.36'}
+
 # path of the file were to save the csv file
 FILE = 'pers.csv'
 
@@ -24,6 +31,7 @@ def parce():
     # list that will store the operators
     pers = []
     html = get_html(URL)
+
     # check the status of the url
     if html.status_code == 200:
         # add the return of the function get_content to the list called pers
@@ -35,20 +43,22 @@ def parce():
     else:
         print('error')
     print(len(pers))
+    
     # display the time of execution of all code
     print("--- %s seconds ---" % round(time.time() - start_time, 2))
 
 
 # function that returns a html file
 def get_html(url):
-
     r = requests.get(url, allow_redirects=True, headers=headers)
+
     return r
 
 
 # function that returns result of the parsed html
 def get_soup(html):
     soup = BeautifulSoup(html, 'html.parser')
+
     return soup
 
 
